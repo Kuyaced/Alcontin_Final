@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lito Alcontin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+  /* General Style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* General body styling */
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #f0f0f0; /* Light text color */
+  background-color: #002d13; /* Dark green background */
+  line-height: 1.6;
+}
+
+/* Header Section */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #013220; /* Dark green background */
+  color: #f0f0f0; /* Light text color */
+  position: fixed; /* Fixed position for the header */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure it spans the full width */
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+header:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo a {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f0f0f0; /* White text for the logo */
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.logo a:hover {
+  color: #9bff9e; /* Light green on hover */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* Increased gap for better spacing */
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  justify-content: center; /* Centers items horizontally */
+  background-color: #013220; /* Dark green background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+nav ul li a {
+  font-size: 1rem; /* Standard text size */
+  font-weight: 500;
+  color: #f0f0f0; /* Light gray text for better readability */
+  text-transform: uppercase;
+  padding: 12px 20px; /* More padding for comfortable clickable area */
+  border-radius: 5px;
+  text-decoration: none; /* No underlines */
+  position: relative;
+  background-color: transparent; /* Transparent background initially */
+  border: 2px solid transparent; /* Transparent border for smooth hover transition */
+  transition: all 0.3s ease; /* Smooth transition for hover and active states */
+}
+
+nav ul li a:hover {
+  color: black;
+  background-color: white;
+}
+
+nav ul li a:active {
+  color: #013220; /* Dark green text when clicked */
+  background-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Stacks items vertically on smaller screens */
+    gap: 20px; /* Adjusts spacing between items when stacked */
+    justify-content: flex-start; /* Aligns items to the top */
+    padding: 10px; /* Adds padding around the items */
+  }
+
+  nav ul li a {
+    font-size: 1.2rem; /* Slightly larger text for mobile */
+    padding: 3px 25px; /* Increases padding for easier interaction */
+  }
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 40px;
+  color: #f0f0f0; /* White menu icon */
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: #013220; /* Dark green background for mobile menu */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  nav ul.show {
+    display: flex;
+    max-height: 1000px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Sticky Section Titles */
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #013220; /* Dark green background for section title */
+  color: #f0f0f0; /* Light text color */
+  padding: 10px;
+  z-index: 10;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+/* Landing Page Section */
+.hero-container {
+  text-align: center;
+  padding: 7rem 2rem;
+  background: linear-gradient(90deg, #013220, #77ff99); /* Dark green to light green gradient */
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: background 0.5s ease-in-out;
+}
+
+.hero-container:hover {
+  background: linear-gradient(90deg, #013220, #9bff9e); /* Slightly lighter green on hover */
+}
+
+.hero-container h1 {
+  font-size: 3.5rem; /* Larger size for the heading */
+  letter-spacing: 2px;
+  color: #ffffff; /* White text for a clean and bright look */
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Subtle glow */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hero-container h1:hover {
+  color: #9bff9e; /* Change text color to light green on hover */
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 15px rgba(0, 255, 0, 0.5); /* Stronger glow on hover */
+}
+
+.hero-container p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  color: #f0f0f0; /* Light gray text for better readability */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Subtle glow */
+  transition: text-shadow 0.3s ease;
+}
+
+.hero-container p:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(0, 255, 0, 0.4); /* Stronger glow on hover */
+}
+
+.hero-container a {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  margin-top: 2rem;
+  color: #ffffff;
+  background-color: #013220; /* Dark green background for the button */
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-container a:hover {
+  color: #013220; /* Dark green text color on hover */
+  background-color: #9bff9e; /* Light green background on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.3); /* Green glowing effect around the button */
+}
+
+section {
+  padding: 4rem 2rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #013220; /* Dark green text for section headings */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Subtle glow effect */
+}
+
+h2:hover {
+  color: #9bff9e; /* Light green text on hover */
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(0, 255, 0, 0.6); /* Stronger glow on hover */
+}
+
+/* Additional Smooth Scrolling and Transition Effects */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f9f9f9; /* Soft light background */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* About Me Section */
+#about {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 2rem;
+  background: linear-gradient(135deg, #f0f0f0, #e5f5e0); /* Light gradient background */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+#about .about-box {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 3rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Deep shadow for depth */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#about .about-box:hover {
+  transform: translateY(-10px); /* Slightly lift the box on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+#about h2 {
+  font-size: 2.5rem;
+  color: #013220; /* Dark green text */
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for color */
+}
+
+#about h2:hover {
+  color: #9bff9e; /* Light green on hover */
+  text-shadow: 0 0 10px #9bff9e, 0 0 20px #9bff9e; /* Glow effect on hover */
+}
+
+#about p {
+  color: #666;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+#about p:hover {
+  color: #333; /* Darker text on hover for emphasis */
+}
+
+#about .btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  color: #fff;
+  background-color: #013220; /* Dark green button */
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+#about .btn:hover {
+ color: black;
+  background-color: #9bff9e; /* Light green on hover */
+  transform: scale(1.05); /* Slightly scale the button on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow on hover */
+}
+
+#about .btn:active {
+ color: white;
+  background-color: #9bff9e; /* Dark green when clicked */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Reduced shadow on click */
+}
+
+/* Circular Image Wrapper */
+.about-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.about-image {
+  width: 150px; /* Adjust size as needed */
+  height: 150px;
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensure the image fits inside the circle */
+  border: 4px solid #9bff9e; /* Soft green border to match the theme */
+  margin-bottom: 1rem; /* Spacing between the image and text */
+}
+
+/* About Box Styling */
+.about-box {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9; /* Light background to match theme */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.about-box:hover {
+  background-color: #e6f7e6; /* Soft green hover effect for box */
+}
+
+/* Heading Styling */
+#about h2 {
+  font-size: 2.5rem;
+  color: #2c3e50; /* Dark text color */
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Paragraph Styling */
+#about p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+/* Button Styling */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  color: #fff;
+  background-color: #9bff9e; /* Soft green button */
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 1.5rem;
+}
+
+.btn:hover {
+  background-color: #13c600; /* Darker green on hover */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  #about {
+    padding: 15px 1rem; /* Reduced padding for smaller screens */
+  }
+
+  #about h2 {
+    font-size: 2rem; /* Slightly smaller heading on mobile */
+  }
+
+  #about p {
+    font-size: 1rem; /* Adjust text size for better readability */
+  }
+
+  #about .btn {
+    padding: 0.8rem 1.5rem; /* Adjust button padding */
+    font-size: 0.9rem; /* Adjust font size */
+  }
+}
+
+/* PROJECT */
+.projects-section {
+  margin: 0rem auto;
+  max-width: 1200px;
+  padding: 3rem 2rem; /* Adjusted padding for better spacing */
+  background: linear-gradient(135deg, #e5f5e0, #f0f0f0); /* Soft green gradient background */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth background and shadow transition */
+}
+
+.projects-section:hover {
+  background: linear-gradient(135deg, #9bff9e, #f0f0f0); /* Subtle glow effect on hover */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.projects-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  margin-top: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth color and text-shadow transition */
+}
+
+.projects-title:hover {
+  color: #013220; /* Dark green color on hover */
+  text-shadow: 0 0 10px #9bff9e, 0 0 20px #9bff9e; /* Glow effect on hover */
+}
+
+.projects-container {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.project-box {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-box:hover {
+  transform: translateY(-12px); /* Larger lift effect on hover */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.project-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease; /* Smooth image transition */
+}
+
+.project-box img:hover {
+  transform: scale(1.05); /* Slightly zoom in the image on hover */
+}
+
+.project-box h3 {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1.5px;
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth color and text-shadow transition */
+}
+
+.project-box h3:hover {
+  color: #013220; /* Dark green color on hover */
+  text-shadow: 0 0 5px #9bff9e, 0 0 10px #9bff9e; /* Light glow effect on hover */
+}
+
+.project-box p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.project-box p:hover {
+  color: #2c3e50; /* Darker text color on hover */
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .projects-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for larger screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-container {
+    grid-template-columns: repeat(3, 1fr); /* Three columns for even larger screens */
+  }
+}
+
+/* CONTACTS SECTION */
+.contacts {
+  margin: 0rem auto;
+  max-width: 1200px;
+  padding-top: 5rem;
+  background: linear-gradient(135deg, #e5f5e0, #f0f0f0); /* Soft green gradient */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for background and shadow */
+}
+
+.contacts:hover {
+  background: linear-gradient(135deg, #9bff9e, #f0f0f0); /* Light green hover effect */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.contacts-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth color transition */
+}
+
+.contacts-title:hover {
+  color: #013220; /* Dark green on hover */
+  text-shadow: 0 0 10px #9bff9e, 0 0 20px #9bff9e; /* Glow effect on hover */
+}
+
+.contact-box {
+  background: linear-gradient(135deg, #f9f9f9, #e6e6e6); /* Soft gradient for contact box */
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Smooth transition for box */
+}
+
+.contact-box:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.contact-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  transition: all 0.3s ease; /* Smooth transition for item alignment */
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: scale(1.1); /* Scale effect on hover */
+  color: #013220; /* Dark green text color on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+.contact-item i {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  color: #7f8c8d; /* Soft gray color for icons */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.contact-item:hover i {
+  color: #9bff9e; /* Light green glow on hover */
+}
+
+.contact-item span {
+  font-size: 1.1rem;
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.contact-item:hover span {
+  color: #2c3e50; /* Darker color for span on hover */
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #333;
+  border-top: 1px solid #ddd;
+  font-size: 1rem;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth footer transition */
+}
+
+footer:hover {
+  background-color: #013220; /* Dark green footer on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Glow effect on hover */
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+</style>
+</head>
+
+<body>
+  <header>
+  <div class="logo">
+    <a href="#top">LITO PORTFOLIO</a>
+  </div>
+  <!-- Menu Toggle Button -->
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  <!-- Navigation Menu -->
+  <nav>
+    <ul id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contacts">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<div class="hero-container" id="home">
+ <h1>Innovative Technologist & Basketball Enthusiast</h1>
+ <p>Passionate about developing cutting-edge technologies while embracing the teamwork, strategy, and resilience I learned from basketball. I strive to push boundaries and inspire progress in both my personal and professional life.</p>
+ <a href="#about">Discover My Journey</a>
+</div>
+
+<section id="about">
+ <!-- About Box Wrapper -->
+ <div class="about-box">
+  <h2>ABOUT ME</h2>
+  <div class="about-image-wrapper">
+ <img src="self.jpg" alt="Lito Alcontin" class="about-image" />
+</div>
+  <p>
+   I am Lito Alcontin, a 22-year-old individual with a deep passion for basketball. I've been an avid follower and participant in the sport, which has significantly shaped my teamwork and leadership skills. Through my experiences, I've developed a strong understanding of strategy, discipline, and resilience, qualities that I apply in various aspects of my personal and professional life.
+  </p>
+  <p>
+   In addition to my love for basketball, I am committed to personal growth and strive for excellence in everything I do. My dedication to the sport has fostered a sense of camaraderie and the ability to thrive in competitive environments, making me a valuable team player and an individual with a strong work ethic. I continue to embrace the challenges and opportunities that come my way, both on and off the court.
+  </p>
+  <a href="#projects" class="btn btn-secondary">See My Work</a>
+ </div>
+</section>
+
+<!-- Project Section -->
+<div id="projects" class="projects-section">
+ <h2 class="projects-title">PROJECT</h2>
+ <div class="projects-container">
+  <div class="project-box">
+   <img src="1.jpg" alt="Basketball Strategy Analysis" />
+   <h3>Basketball Strategy Tool</h3>
+   <p>
+    A project focused on creating a digital tool for analyzing basketball strategies. This tool helps players and coaches visualize different plays, track team performance, and optimize game plans.
+   </p>
+  </div>
+  <div class="project-box">
+   <img src="2.jpg" alt="Teamwork App" />
+   <h3>Teamwork Collaboration App</h3>
+   <p>
+    A collaboration platform designed for sports teams to communicate efficiently. Features include task management, event scheduling, and performance tracking, aimed at enhancing teamwork both on and off the court.
+   </p>
+  </div>
+  <div class="project-box">
+   <img src="3.jpg" alt="Fitness Tracker" />
+   <h3>Personal Fitness Tracker</h3>
+   <p>
+    A fitness tracking app designed to monitor and analyze physical activity. It integrates workout routines, nutrition plans, and progress tracking to improve athletic performance, especially for basketball players.
+   </p>
+  </div>
+  <div class="project-box">
+   <img src="4.jpg" alt="Leadership Workshop Platform" />
+   <h3>Leadership Workshop Platform</h3>
+   <p>
+    A platform to host leadership and teamwork workshops. This project was developed to help individuals improve their leadership skills, which are crucial both in sports and professional environments.
+   </p>
+  </div>
+ </div>
+</div>
+
+<!-- Contact Section -->
+<section id="contacts" class="contacts">
+  <h2 class="contacts-title">CONTACT</h2>
+  <div class="contact-box">
+    <div class="contact-items">
+      <a href="tel:+09655941448" target="_blank" class="contact-item">
+        <i class="fas fa-phone"></i>
+        <span>Call Me</span>
+      </a>
+      <a href="https://www.facebook.com/otoyalcontin28" target="_blank" class="contact-item">
+        <i class="fab fa-facebook"></i>
+        <span>Facebook</span>
+      </a>
+      <a href="https://www.tiktok.com/@lito_alcontin?_t=8sOz4CnLEUk&_r=1" target="_blank" class="contact-item">
+        <i class="fab fa-tiktok"></i>
+        <span>TikTok</span>
+      </a>
+      <a href="https://www.youtube.com/@otoy2393" target="_blank" class="contact-item">
+ <i class="fab fa-youtube"></i>
+ <span>YouTube</span>
+</a>
+      <a href="mailto:alcontinotoy984@gmail.com" target="_blank" class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <span>Email Me</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer>
+  <p>&copy; 2024 Lito Alcontin. All rights reserved.</p>
+</footer>
+
+<script>
+// JavaScript for Mobile Menu Toggle
+const menuToggle = document.getElementById('menu-toggle');
+const navMenu = document.getElementById('menu');
+
+menuToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('show'); // Toggles the 'show' class to reveal the menu
+});
+</script>
+
+</body>
+</html>
